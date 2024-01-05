@@ -1,192 +1,62 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calendario TFA GUBBIO-MARSCIANO</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2; /* Colore grigio chiaro */
-      margin: 20px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Mia Pagina</title>
 
-    h2 {
-      text-align: center;
-      color: #333;
-    }
+    <style>
+        body {
+            /* Imposta l'immagine come sfondo */
+            background-image: url('https://drive.google.com/uc?export=view&id=1391FJiN7b6JsIo90K4QDDoOrqiv5T4qn');
 
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin-top: 20px;
-    }
+            /* Imposta le dimensioni del background a copertura (cover) */
+            background-size: cover;
 
-    th, td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: center;
-    }
+            /* Imposta il posizionamento del background al centro */
+            background-position: center;
 
-    th {
-      background-color: #f5f5f5; /* Colore sfondo testata */
-    }
+            /* Imposta l'altezza minima del body per garantire che il contenuto sia visibile */
+            min-height: 100vh;
 
-    select {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 8px;
-      margin: 0;
-    }
+            /* Riduci le dimensioni dello sfondo */
+            background-size: 50%;
 
-    .yellow {
-      background-color: #ffff99; /* giallo */
-    }
+            /* Imposta la formattazione del testo per una migliore leggibilità sullo sfondo */
+            color: #ffffff;
+            text-align: center; /* Aggiunto per centrare il testo */
+            padding: 20px; /* Aggiunto spazio intorno al contenuto */
+        }
 
-    .red {
-      background-color: #ff9999; /* rosso */
-    }
-
-    .blue {
-      background-color: #99ccff; /* azzurro */
-    }
-
-    .green {
-      background-color: #99ff99; /* verde */
-    }
-
-    .orange {
-      background-color: #ffcc99; /* arancione */
-    }
-  </style>
+        h1 {
+           /* Rendi blu il colore del testo per "L'ILIADE-GRUPPO DI LAVORO 4" */
+           color: purple;
+           /* Rendi il testo in grassetto */
+           font-weight: bold;
+           /* Aumenta la dimensione del testo di due caratteri */
+           font-size: 5em;
+            
+        }
+    </style>
+</head>           
+        
+    </style>
 </head>
 <body>
 
-<h2>Calendario TFA GUBBIO-MARSCIANO</h2>
+    <h1>L'ILIADE-GRUPPO DI LAVORO 4</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Data</th>
-      <th>Orario di Inizio 1</th>
-      <th>Orario di Fine 1</th>
-      <th>Materia 1</th>
-      <th>Orario di Inizio 2</th>
-      <th>Orario di Fine 2</th>
-      <th>Materia 2</th>
-      <th>Esame</th>
-    </tr>
-  </thead>
-  <tbody id="calendarioBody">
-    <!-- Il contenuto del calendario verrà inserito qui tramite JavaScript -->
-  </tbody>
-</table>
+    <!-- Immagine 1 -->
+    <img src="https://drive.google.com/uc?export=view&id=1sGs5eesQCSS2RzuAcRTap5_vtUhBSuHJ" width="300" height="300">
 
-<script>
-  // Funzione per ottenere la data di oggi
-  function getToday() {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    return today;
-  }
+    <!-- Video 1 -->
+    <iframe width="560" height="315" src="https://drive.google.com/uc?export=view&id=12KX1ajY1DYDbGG124QOVKfVEwFz3VCpu" frameborder="0" allowfullscreen></iframe>
 
-  // Funzione per salvare la selezione nell'oggetto localStorage
-  function salvaSelezione() {
-    const selezione = {
-      orarioInizio1: document.getElementById("orarioInizio1").value,
-      orarioFine1: document.getElementById("orarioFine1").value,
-      materia1: document.getElementById("materia1").value,
-      orarioInizio2: document.getElementById("orarioInizio2").value,
-      orarioFine2: document.getElementById("orarioFine2").value,
-      materia2: document.getElementById("materia2").value,
-      esame: document.getElementById("esame").value
-    };
+    <!-- Immagine 2 -->
+    <img src="https://drive.google.com/uc?export=view&id=1Qj81weWC2wPngGBIB9q8TJcXdAWo2q0F">
 
-    localStorage.setItem("selezione", JSON.stringify(selezione));
-  }
-
-  // Funzione per caricare la selezione salvata da localStorage
-  function caricaSelezioneSalvata() {
-    const selezioneSalvata = localStorage.getItem("selezione");
-
-    if (selezioneSalvata) {
-      const selezione = JSON.parse(selezioneSalvata);
-
-      document.getElementById("orarioInizio1").value = selezione.orarioInizio1;
-      document.getElementById("orarioFine1").value = selezione.orarioFine1;
-      document.getElementById("materia1").value = selezione.materia1;
-      document.getElementById("orarioInizio2").value = selezione.orarioInizio2;
-      document.getElementById("orarioFine2").value = selezione.orarioFine2;
-      document.getElementById("materia2").value = selezione.materia2;
-      document.getElementById("esame").value = selezione.esame;
-    }
-  }
-
-  // Funzione per generare il calendario
-  function generateCalendar() {
-    const today = getToday();
-    const endDate = new Date('2024-05-18'); // Imposta la data di fine a maggio 2024
-
-    const tableBody = document.getElementById('calendarioBody');
-
-    // Materie disponibili
-    const materie = [
-      '',
-      'Psicologia dello Sviluppo (Raspa)',
-      'Neuropsichiatria infantile (Gallai)',
-      'Legislazione (Coccia)',
-      'Legislazione (Belardinelli)',
-      'Laboratorio',
-      'Progettazione del PDF e del PEI (Sannipoli)',
-      'Modelli integrati (Pierini)',
-      'TIC (Pattoia)',
-      'Tirocinio',
-      'Didattica speciale (Marsili)',
-      'Pedagogia della relazione di aiuto (Bartolini)',
-      'Pedagogia e didattica speciale (Morganti)',
-      'Pedagogia speciale della gestione integrata (Signorelli)'
-    ];
-
-    // Orari disponibili
-    const orariInizio = ['Seleziona Orario', '08:30', '14:30'];
-    const orariFine = ['Seleziona Orario', '19:30', '13:30', '16:30', '19:00', '18:30'];
-    const giorniSettimana = ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'];
-
-    // Ciclo fino alla data di fine
-    for (let date = today; date <= endDate; date.setDate(date.getDate() + 1)) {
-      const dayOfWeek = date.getDay();
-
-      // Controlla se il giorno è lunedì, venerdì o sabato
-      if (dayOfWeek === 1 || dayOfWeek === 5 || dayOfWeek === 6) {
-        const row = tableBody.insertRow();
-        const cellDate = row.insertCell(0);
-        const cellStartTime1 = row.insertCell(1);
-        const cellEndTime1 = row.insertCell(2);
-        const cellMateria1 = row.insertCell(3);
-        const cellStartTime2 = row.insertCell(4);
-        const cellEndTime2 = row.insertCell(5);
-        const cellMateria2 = row.insertCell(6);
-        const cellEsame = row.insertCell(7);
-
-        // Inserisci le tendine per la scelta di data, orario di inizio, orario di fine, materia ed esame
-        cellDate.innerHTML = `${giorniSettimana[dayOfWeek]} ${date.toLocaleDateString('it-IT')}`;
-        cellStartTime1.innerHTML = `<select id="orarioInizio1" class="red" onchange="salvaSelezione()">${orariInizio.map(orario => `<option>${orario}</option>`).join('')}</select>`;
-        cellEndTime1.innerHTML = `<select id="orarioFine1" class="red" onchange="salvaSelezione()">${orariFine.map(orario => `<option>${orario}</option>`).join('')}</select>`;
-        cellMateria1.innerHTML = `<select id="materia1" class="blue" onchange="salvaSelezione()">${materie.map(materia => `<option>${materia}</option>`).join('')}</select>`;
-        cellStartTime2.innerHTML = `<select id="orarioInizio2" class="green" onchange="salvaSelezione()">${orariInizio.map(orario => `<option>${orario}</option>`).join('')}</select>`;
-        cellEndTime2.innerHTML = `<select id="orarioFine2" class="green" onchange="salvaSelezione()">${orariFine.map(orario => `<option>${orario}</option>`).join('')}</select>`;
-        cellMateria2.innerHTML = `<select id="materia2" class="orange" onchange="salvaSelezione()">${materie.map(materia => `<option>${materia}</option>`).join('')}</select>`;
-        cellEsame.innerHTML = `<select id="esame" class="yellow" onchange="salvaSelezione()">${materie.map(materia => `<option>${materia}</option>`).join('')}</select>`;
-      }
-    }
-
-    // Carica la selezione salvata
-    caricaSelezioneSalvata();
-  }
-
-  // Chiama la funzione per generare il calendario
-  generateCalendar();
-</script>
+    
+    <!-- Puoi aggiungere ulteriori immagini e video seguendo lo stesso modello -->
 
 </body>
 </html>
